@@ -12,3 +12,6 @@ AJ Arriola
 
 Acknowledgments
 
+Nick Santoro - Created Fonzy.png player image.
+
+
