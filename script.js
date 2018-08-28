@@ -7,8 +7,15 @@ var fg = new Image();
 var pipeNorth = new Image();
 var pipeSouth = new Image();
 var trollBg = document.querySelector('#bg-img');
-console.log(trollBg);
 
+
+var fly = new Audio();
+var scor = new Audio();
+var trollSound = new Audio();
+
+fly.src = "";
+scor.src = "";
+trollSound = "";
 //Find images and pluggin in src to load images onto game
 
 bird.src = "assets/images/fonzy2.0.png";
@@ -67,7 +74,7 @@ function draw() {
         && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
         || by + bird.height >= cvs.height - fg.height)
          {  
-            trollBg.style.display = 'block';
+            // trollBg.style.display = 'block';
             // add flag asking if game is over!!!!!!
             if (confirm("GAME OVER!! Your score was " + score )){
                 
@@ -78,7 +85,7 @@ function draw() {
             score++;
         }
     }
-    
+
     // ctx.drawImage(pipeNorth,150,0);
     // ctx.drawImage(pipeSouth,150,0+constant);
 
