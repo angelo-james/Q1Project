@@ -13,7 +13,7 @@ var fly = new Audio();
 var scor = new Audio();
 var trollSound = new Audio();
 
-fly.src = "";
+fly.src = "assets/images/bark.mp3";
 scor.src = "";
 trollSound = "";
 //Find images and pluggin in src to load images onto game
@@ -39,12 +39,24 @@ var score = 0;
 //adding an eventlistener to wait for the user to pressdown on a key
 document.addEventListener("keydown",moveUp);
 
+document.addEventListener("keyUp", stop);
+
 function moveUp() {
     var key = event.keyCode;
+    // var 
     //specifically waiting for the user to press down on the keycode "32" which is the space bar
     if (key === 32) {
         by -= 40;
+        fly.play();
     }    
+}
+
+function stop() {
+    var key = event.keyCode;
+
+    if (key===32) {
+        fly.stop();
+    }
 }
 //
 var pipe = [];
