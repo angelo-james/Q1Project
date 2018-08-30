@@ -1,5 +1,5 @@
 FONZY BIRD the GAME
-![Screenshot](assets/images/fonzyGameImg.png);
+![]assets/images/fonzyGameImg.png);
 
 
 
