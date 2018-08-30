@@ -1,4 +1,4 @@
-![](assets/images/fonzyGameImg.png)
+![](assets/images/fonzyGameImg.png) <br />
 FONZY BIRD the GAME
 
 Project Title
