@@ -1,3 +1,8 @@
+FONZY BIRD the GAME
+![Alt text](assets/images/fonzyGameImg.png?raw=true "Title")
+
+
+
 Project Title
 SeeSaw Up and Down
 
