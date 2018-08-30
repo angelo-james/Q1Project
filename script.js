@@ -3,19 +3,35 @@
 //LOCAL STORAGE
 
 // ============================================================
+var users = {};
+var usercount = 0;
+
 function store() {
     var username = document.querySelector('#username').value;
     var password = document.querySelector('#password').value;
 
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
+
+    if (users[username] !== undefined) {
+        alert('Username is already in use. Please pick a new name.')
+    }
+    
+    if (users['username'] === undefined) {
+        
+        users[username] = password;
+        
+    }
 }
     var myStorage = localStorage.getItem('username');
-// ============================================================
-
-// MODAL
 
 // ============================================================
+
+//User check function
+
+// ============================================================
+
+
 
 // ============================================================
 
@@ -97,18 +113,18 @@ function draw() {
                 y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
             });
         }
-        if (bx + bird.width >= pipe[i].x && bx <= pipe[i].x + pipeNorth.width
-        && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
-        || by + bird.height >= cvs.height - fg.height)
-         {  
-            if (score >= 5) {
-                trollBg.style.display = 'block';
-                cvs.style.display = none;
-            }
-            // add flag asking if game is over!!!!!!
-            // confirm("GAME OVER!! Your score was " + score );
-            location.reload();
-        }
+        // if (bx + bird.width >= pipe[i].x && bx <= pipe[i].x + pipeNorth.width
+        // && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
+        // || by + bird.height >= cvs.height - fg.height)
+        //  {  
+        //     if (score >= 5) {
+        //         trollBg.style.display = 'block';
+        //         cvs.style.display = none;
+        //     }
+        //     // add flag asking if game is over!!!!!!
+        //     // confirm("GAME OVER!! Your score was " + score );
+        //     location.reload();
+        // }
         if (pipe[i].x == 10) {
             score++;
         }
@@ -129,6 +145,6 @@ function draw() {
     ctx.fillText(myStorage +"'s" + " HIGHSCORE : " + 11, 10,cvs.height-475);
     
     requestAnimationFrame(draw);
+    
 }
-
 draw();
