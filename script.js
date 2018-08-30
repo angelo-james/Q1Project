@@ -1,10 +1,11 @@
+
+
 // ============================================================
 
-//LOCAL STORAGE
+//LOCAL STORAGE/USER REGISTER
 
 // ============================================================
 var users = {};
-var usercount = 0;
 
 function store() {
     var username = document.querySelector('#username').value;
@@ -14,7 +15,7 @@ function store() {
     localStorage.setItem('password', password);
 
     if (users[username] !== undefined) {
-        alert('Username is already in use. Please pick a new name.')
+        return alert('Username is already in use. Please pick a new name.');
     }
     
     if (users['username'] === undefined) {
@@ -24,6 +25,23 @@ function store() {
     }
 }
     var myStorage = localStorage.getItem('username');
+// ============================================================
+
+//LOCAL STORAGE/USER LOGIN
+
+// ============================================================
+
+function checkUser(users) {
+    var username = document.querySelector('#username').value;
+    var password = document.querySelector('#password').value;
+
+    for (var username in users) {
+        if (username !== undefined && users[username] === password) {
+            return alert('you may enter');
+        }
+    }
+    return alert('user doesnt exsist please sign up');
+}
 
 // ============================================================
 
