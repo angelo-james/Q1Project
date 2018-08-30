@@ -11,7 +11,10 @@
     <header>
         <h1>FONZY BIRD</h1>
     </header>
-
+    <div class="btns">
+    <button type="input" class="startGameBtn" onClick="startGame()">START GAME</button>
+    <button type="input" class="endGameBtn" onClick="endGame()">END GAME</button>
+    </div>
     <div id="container">
         <canvas id="canvas" width="288" height="512"></canvas>
 
@@ -26,7 +29,7 @@
   </button> -->
   
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+  <!-- <div class="modal show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,13 +45,13 @@
           <p>Once the game starts</p>
 
           <form>
-            <input id="username" type="text" placeholder="Username" value=''>
+            <input id="username" type="text" placeholder="Username" value="">
             <br>
-            <input id="password" type="text" placeholder="Password" value=''>
+            <input id="password" type="text" placeholder="Password" value="">
             <br>
             <br>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
-            <button type="button" class="btn btn-primary" onClick='store()'>Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="checkUser()">Login</button>
+            <button type="button" class="btn btn-primary" onClick="store()">Register</button>
           </form>
 
         </div>

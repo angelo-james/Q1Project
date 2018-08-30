@@ -12,6 +12,15 @@
 h1 {
     text-align: center;
 }
+
+.btns {
+    margin-bottom: 5%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 /* =================================================================================== */
 
 /* TROLL BACKGROUND IMAGE */
@@ -50,7 +59,7 @@ h1 {
 
 /* =================================================================================== */
 footer {
-    background: coral;
+    background: beige;
     
     font-family: Comic Sans MS;
     

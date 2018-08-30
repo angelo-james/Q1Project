@@ -20,35 +20,25 @@ function store() {
     
     if (users['username'] === undefined) {
         
-        users[username] = password;
+        users[username] = password; 
         
     }
+
+    var usersStorage = users;
+    localStorage.setItem('usersStorage', JSON.stringify(users));
 }
     var myStorage = localStorage.getItem('username');
-// ============================================================
-
-//LOCAL STORAGE/USER LOGIN
 
 // ============================================================
 
-function checkUser(users) {
-    var username = document.querySelector('#username').value;
-    var password = document.querySelector('#password').value;
+//Local storage highscore keeper
 
-    for (var username in users) {
-        if (username !== undefined && users[username] === password) {
-            return alert('you may enter');
-        }
-    }
-    return alert('user doesnt exsist please sign up');
-}
-
-// ============================================================
-
-//User check function
-
-// ============================================================
-
+// ===========================================================/
+var currentscore = 0;
+var highscore = 0;
+var newHighScore = getHighScore;
+var highscoreStorage = localStorage.setItem('currentscore', highscore);
+var getHighScore = localStorage.getItem('highscore');
 
 
 // ============================================================
@@ -56,8 +46,8 @@ function checkUser(users) {
 // FONZY BIRD GAME
 
 // ============================================================
-var cvs = document.getElementById("canvas");
-var ctx = cvs.getContext("2d");
+var cvs = document.getElementById('canvas');
+var ctx = cvs.getContext('2d');
 
 var bird = new Image();
 var bg = new Image();
@@ -71,16 +61,16 @@ var fly = new Audio();
 var scor = new Audio();
 var trollSound = new Audio();
 
-fly.src = "assets/images/bark.mp3";
-scor.src = "";
-trollSound.src = "";
+fly.src = 'assets/images/bark.mp3';
+scor.src = '';
+trollSound.src = '';
 //Find images and pluggin in src to load images onto game
 
-bird.src = "assets/images/fonzy2.0.png";
-bg.src = "assets/images/bg.png";
-fg.src = "assets/images/fg.png";
-pipeNorth.src = "assets/images/pipeNorth.png";
-pipeSouth.src = "assets/images/pipeSouth.png";
+bird.src = 'assets/images/fonzy2.0.png';
+bg.src = 'assets/images/bg.png';
+fg.src = 'assets/images/fg.png';
+pipeNorth.src = 'assets/images/pipeNorth.png';
+pipeSouth.src = 'assets/images/pipeSouth.png';
 
 //Creats the gap after the pipe and before the southpipe starts
 var gap = 100;
@@ -93,15 +83,14 @@ var by = 150;
 //creates gravity so that the player sprite moves down the y axis
 var gravity = 2;
 //a score counter to increment by one as the player passes through the pipes
-var score = 0;
-var highscore = 0;
+
 //adding an eventlistener to wait for the user to pressdown on a key
-document.addEventListener("keydown",moveUp);
+document.addEventListener('keydown',moveUp);
 
 function moveUp() {
     var key = event.keyCode;
     // var 
-    //specifically waiting for the user to press down on the keycode "32" which is the space bar
+    //specifically waiting for the user to press down on the keycode '32' which is the space bar
     // if (key === 32) {
         by -= 30;
     // }    
@@ -135,21 +124,21 @@ function draw() {
         // && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
         // || by + bird.height >= cvs.height - fg.height)
         //  {  
-        //     if (score >= 5) {
+        //     if (currentscore >= 5) {
         //         trollBg.style.display = 'block';
         //         cvs.style.display = none;
         //     }
         //     // add flag asking if game is over!!!!!!
-        //     // confirm("GAME OVER!! Your score was " + score );
+        //     // confirm('GAME OVER!! Your currentscore was ' + currentscore );
         //     location.reload();
         // }
+        if (currentscore > highscore) {
+            localStorage.setItem('currentscore', currentscore);
+        } 
         if (pipe[i].x == 10) {
-            score++;
+            currentscore++;
         }
     }
-
-    // ctx.drawImage(pipeNorth,150,0);
-    // ctx.drawImage(pipeSouth,150,0+constant);
 
     ctx.drawImage(fg,0,cvs.height - fg.height);
 
@@ -157,12 +146,31 @@ function draw() {
 
     by += gravity;
 
-    ctx.fillStyle = "red";
-    ctx.font = "20px Comic Sans MS";
-    ctx.fillText("Score : " + score, 10,cvs.height-20);
-    ctx.fillText(myStorage +"'s" + " HIGHSCORE : " + 11, 10,cvs.height-475);
+    ctx.fillStyle = 'red';
+    ctx.font = '20px Comic Sans MS';
+    ctx.fillText('Score : ' + currentscore, 10,cvs.height-20);
+    ctx.fillText(myStorage +"'s" + " HIGHSCORE : " + getHighScore, 10,cvs.height-475);
     
     requestAnimationFrame(draw);
     
 }
 draw();
+
+// ============================================================
+
+//LOCAL STORAGE/USER LOGIN
+
+// ============================================================
+function checkUser() {
+    var username = document.querySelector('#username').value;
+    var password = document.querySelector('#password').value;
+    var obj = localStorage.getItem('usersStorage');
+
+    for (var username in obj) {
+        if (username !== undefined && obj[username] === password) {
+            return alert('you may enter');
+        }
+        return alert('Username or Password does not match');
+    }
+    
+}
