@@ -10,7 +10,7 @@
 /* TROLL BACKGROUND IMAGE */
 
 /* =================================================================================== */
-/* #container {
+#container {
     position: relative;
 }
 
@@ -27,4 +27,16 @@
 
 #bg-img img {
     max-width: 100%;
-} */
+    max-height: 100vh;
+}
+
+#canvas {
+    display: ;
+}
+
+footer {
+    background: coral;
+    
+    font-family: Comic Sans MS;
+    
+}
