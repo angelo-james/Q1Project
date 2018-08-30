@@ -1,7 +1,5 @@
+![](assets/images/fonzyGameImg.png)
 FONZY BIRD the GAME
-![](assets/images/fonzyGameImg.png);
-
-
 
 Project Title
 SeeSaw Up and Down
