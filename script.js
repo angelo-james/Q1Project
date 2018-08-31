@@ -1,5 +1,3 @@
-
-
 // ============================================================
 
 //LOCAL STORAGE/USER REGISTER
@@ -33,7 +31,8 @@ function store() {
     modal.style.display = 'none';
     startGameBtn.style.display = 'block';
 }
-    var myStorage = localStorage.getItem('username');
+
+var myStorage = localStorage.getItem('username');
 
 // ============================================================
 
@@ -45,7 +44,6 @@ var highscore = 0;
 var newHighScore = getHighScore;
 var highscoreStorage = localStorage.setItem('currentscore', highscore);
 var getHighScore = localStorage.getItem('highscore');
-
 
 // ============================================================
 
@@ -133,9 +131,9 @@ function draw() {
             });
         }
         if (bx + bird.width >= pipe[i].x && bx <= pipe[i].x + pipeNorth.width
-        && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
-        || by + bird.height >= cvs.height - fg.height)
-         {  
+            && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
+            || by + bird.height >= cvs.height - fg.height) {
+
             if (currentscore >= 5) {
                 trollBg.style.display = 'block';
 
@@ -165,9 +163,7 @@ function draw() {
     ctx.fillText(myStorage +"'s" + " HIGHSCORE : " + getHighScore, 10,cvs.height-475);
     
     requestAnimationFrame(draw);
-    
 }
-
 
 // ============================================================
 
