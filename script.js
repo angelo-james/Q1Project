@@ -6,8 +6,11 @@
 
 // ============================================================
 var users = {};
+var modal = document.querySelector('.modal-dialog');
 
 function store() {
+    var modal = document.querySelector('.modal-dialog');
+    var startGameBtn = document.querySelector('.startGameBtn');
     var username = document.querySelector('#username').value;
     var password = document.querySelector('#password').value;
 
@@ -26,7 +29,9 @@ function store() {
 
     var usersStorage = users;
     localStorage.setItem('usersStorage', JSON.stringify(users));
-    
+
+    modal.style.display = 'none';
+    startGameBtn.style.display = 'block';
 }
     var myStorage = localStorage.getItem('username');
 
@@ -133,7 +138,7 @@ function draw() {
         //     if (currentscore >= 5) {
         //         trollBg.style.display = 'block';
 
-        //         cvs.style.display = none;
+        //         cvs.style.display = 'none';
         //     }
         //     // add flag asking if game is over!!!!!!
         //     // confirm('GAME OVER!! Your currentscore was ' + currentscore );
