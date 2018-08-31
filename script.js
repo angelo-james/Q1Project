@@ -26,6 +26,7 @@ function store() {
 
     var usersStorage = users;
     localStorage.setItem('usersStorage', JSON.stringify(users));
+    
 }
     var myStorage = localStorage.getItem('username');
 
@@ -48,6 +49,11 @@ var getHighScore = localStorage.getItem('highscore');
 // ============================================================
 var cvs = document.getElementById('canvas');
 var ctx = cvs.getContext('2d');
+
+function startGame() {
+    cvs.style.display = 'block';
+    draw();
+} 
 
 var bird = new Image();
 var bg = new Image();
@@ -126,6 +132,7 @@ function draw() {
         //  {  
         //     if (currentscore >= 5) {
         //         trollBg.style.display = 'block';
+
         //         cvs.style.display = none;
         //     }
         //     // add flag asking if game is over!!!!!!
@@ -154,7 +161,7 @@ function draw() {
     requestAnimationFrame(draw);
     
 }
-draw();
+
 
 // ============================================================
 
