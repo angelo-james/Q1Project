@@ -97,6 +97,7 @@ var gravity = 2;
 
 //adding an eventlistener to wait for the user to pressdown on a key
 document.addEventListener('keydown',moveUp);
+window.addEventListener('touchstart', moveUp);
 
 function moveUp() {
     var key = event.keyCode;
@@ -131,19 +132,19 @@ function draw() {
                 y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
             });
         }
-        // if (bx + bird.width >= pipe[i].x && bx <= pipe[i].x + pipeNorth.width
-        // && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
-        // || by + bird.height >= cvs.height - fg.height)
-        //  {  
-        //     if (currentscore >= 5) {
-        //         trollBg.style.display = 'block';
+        if (bx + bird.width >= pipe[i].x && bx <= pipe[i].x + pipeNorth.width
+        && (by <= pipe[i].y + pipeNorth.height || by+bird.height >= pipe[i].y+constant)
+        || by + bird.height >= cvs.height - fg.height)
+         {  
+            if (currentscore >= 5) {
+                trollBg.style.display = 'block';
 
-        //         cvs.style.display = 'none';
-        //     }
-        //     // add flag asking if game is over!!!!!!
-        //     // confirm('GAME OVER!! Your currentscore was ' + currentscore );
-        //     location.reload();
-        // }
+                cvs.style.display = 'none';
+            }
+            // add flag asking if game is over!!!!!!
+            // confirm('GAME OVER!! Your currentscore was ' + currentscore );
+            location.reload();
+        }
         if (currentscore > highscore) {
             localStorage.setItem('currentscore', currentscore);
         } 
