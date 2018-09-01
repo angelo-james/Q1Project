@@ -3,47 +3,11 @@
 //LOCAL STORAGE/USER REGISTER
 
 // ============================================================
-var users = {};
-var modal = document.querySelector('.modal-dialog');
-
 function store() {
-    var modal = document.querySelector('.modal-dialog');
-    var startGameBtn = document.querySelector('.startGameBtn');
     var username = document.querySelector('#username').value;
-    var password = document.querySelector('#password').value;
-
     localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-
-    if (users[username] !== undefined) {
-        return alert('Username is already in use. Please pick a new name.');
-    }
-    
-    if (users['username'] === undefined) {
-        
-        users[username] = password; 
-        
-    }
-
-    var usersStorage = users;
-    localStorage.setItem('usersStorage', JSON.stringify(users));
-
-    modal.style.display = 'none';
-    startGameBtn.style.display = 'block';
 }
 
-var myStorage = localStorage.getItem('username');
-
-// ============================================================
-
-//Local storage highscore keeper
-
-// ===========================================================/
-var currentscore = 0;
-var highscore = 0;
-var newHighScore = getHighScore;
-var highscoreStorage = localStorage.setItem('currentscore', highscore);
-var getHighScore = localStorage.getItem('highscore');
 
 // ============================================================
 
@@ -52,8 +16,11 @@ var getHighScore = localStorage.getItem('highscore');
 // ============================================================
 var cvs = document.getElementById('canvas');
 var ctx = cvs.getContext('2d');
+var currentscore = 0;
+var modal = document.querySelector('.modal-dialog');
 
 function startGame() {
+    modal.style.display = 'none';
     cvs.style.display = 'block';
     draw();
 } 
@@ -99,11 +66,7 @@ window.addEventListener('touchstart', moveUp);
 
 function moveUp() {
     var key = event.keyCode;
-    // var 
-    //specifically waiting for the user to press down on the keycode '32' which is the space bar
-    // if (key === 32) {
         by -= 30;
-    // }    
 }
 
 var pipe = [];
@@ -118,13 +81,12 @@ function draw() {
     ctx.drawImage(bg,0,0);
 
     for (var i = 0; i < pipe.length; i++) {
-        // score++;
         ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);
         ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);
 
         pipe[i].x-=2;
         
-        if (pipe[i].x === 130) {
+        if (pipe[i].x === 120) {
             pipe.push({
                 x: cvs.width,
                 y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
@@ -136,16 +98,12 @@ function draw() {
 
             if (currentscore >= 5) {
                 trollBg.style.display = 'block';
-
                 cvs.style.display = 'none';
+                modal.style.display = 'none';
+            } else {
+                location.reload();
             }
-            // add flag asking if game is over!!!!!!
-            // confirm('GAME OVER!! Your currentscore was ' + currentscore );
-            location.reload();
         }
-        if (currentscore > highscore) {
-            localStorage.setItem('currentscore', currentscore);
-        } 
         if (pipe[i].x == 10) {
             currentscore++;
         }
@@ -159,27 +117,26 @@ function draw() {
 
     ctx.fillStyle = 'red';
     ctx.font = '20px Comic Sans MS';
-    ctx.fillText('Score : ' + currentscore, 10,cvs.height-20);
-    ctx.fillText(myStorage +"'s" + " HIGHSCORE : " + getHighScore, 10,cvs.height-475);
+    ctx.fillText(localStorage.getItem('username') + "'s Score : " + currentscore, 10,cvs.height-20);
+    ctx.fillText("HIGHSCORE : " + 10, 10,cvs.height-475);
     
     requestAnimationFrame(draw);
 }
-
 // ============================================================
 
 //LOCAL STORAGE/USER LOGIN
 
 // ============================================================
-function checkUser() {
-    var username = document.querySelector('#username').value;
-    var password = document.querySelector('#password').value;
-    var obj = localStorage.getItem('usersStorage');
+// function checkUser() {
+//     var username = document.querySelector('#username').value;
+//     var password = document.querySelector('#password').value;
+//     var obj = localStorage.getItem('usersStorage');
 
-    for (var username in obj) {
-        if (username !== undefined && obj[username] === password) {
-            return alert('you may enter');
-        }
-        return alert('Username or Password does not match');
-    }
+//     for (var username in obj) {
+//         if (username !== undefined && obj[username] === password) {
+//             return alert('you may enter');
+//         }
+//         return alert('Username or Password does not match');
+//     }
     
-}
+// }
