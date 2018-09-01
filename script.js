@@ -37,9 +37,9 @@ var fly = new Audio();
 var scor = new Audio();
 var trollSound = new Audio();
 
-fly.src = 'assets/images/bark.mp3';
-scor.src = '';
-trollSound.src = '';
+fly.src = 'assets/images/bark.wav';
+scor.src = 'assets/images/coin.wav';
+trollSound.src = 'assets/images/scream.wav';
 //Find images and pluggin in src to load images onto game
 
 bird.src = 'assets/images/fonzy2.0.png';
@@ -65,7 +65,7 @@ document.addEventListener('keydown',moveUp);
 window.addEventListener('touchstart', moveUp);
 
 function moveUp() {
-    var key = event.keyCode;
+        fly.play();
         by -= 30;
 }
 
@@ -97,6 +97,7 @@ function draw() {
             || by + bird.height >= cvs.height - fg.height) {
 
             if (currentscore >= 5) {
+                trollSound.play();
                 trollBg.style.display = 'block';
                 cvs.style.display = 'none';
                 modal.style.display = 'none';
@@ -105,6 +106,7 @@ function draw() {
             }
         }
         if (pipe[i].x == 10) {
+            scor.play();
             currentscore++;
         }
     }
