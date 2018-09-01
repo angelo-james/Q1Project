@@ -3,9 +3,12 @@
 //LOCAL STORAGE/USER REGISTER
 
 // ============================================================
+var modal = document.querySelector('.modal-dialog');
 function store() {
+    modal.style.display = "none";
     var username = document.querySelector('#username').value;
     localStorage.setItem('username', username);
+
 }
 
 
@@ -17,7 +20,7 @@ function store() {
 var cvs = document.getElementById('canvas');
 var ctx = cvs.getContext('2d');
 var currentscore = 0;
-var modal = document.querySelector('.modal-dialog');
+
 
 function startGame() {
     modal.style.display = 'none';
